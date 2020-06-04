@@ -5,33 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SigninActivity"
+    tools:context=".IngresoActivity"
     android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_view"
-        android:hint="@string/hint_nombres"
-        android:importantForAutofill="no"
-        android:textColorHint="@color/colorPrimary"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:layout_marginTop="20dp"
-        android:inputType="text"/>
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_view"
-        android:hint="@string/hint_apellidos"
-        android:importantForAutofill="no"
-        android:textColorHint="@color/colorPrimary"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:layout_marginTop="10dp"
-        android:inputType="text"/>
     <EditText
         android:layout_width="250dp"
         android:layout_height="50dp"
@@ -47,39 +25,30 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
-        android:hint="@string/hint_email"
+        android:hint="@string/hint_contrasena"
         android:importantForAutofill="no"
         android:textColorHint="@color/colorPrimary"
         android:gravity="center"
         android:textSize="25sp"
         android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"/>
-
+        android:inputType="textPassword"/>
     <Button
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
         app:backgroundTint="@color/colorAccent"
-        android:hint="@string/text_go"
+        android:hint="@string/text_iniciar_sesion"
         android:textColorHint="#FFFFFF"
         android:textSize="22sp"
-        android:layout_marginTop="30dp"/>
-
+        android:layout_marginTop="30dp"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_cuenta"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_inicia_aqui"
+        android:text="@string/text_olvidaste_tu_contrasena"
         android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:layout_marginTop="2dp"/>
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"/>
 
 
 </LinearLayout>

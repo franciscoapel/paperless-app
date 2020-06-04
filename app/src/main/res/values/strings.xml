@@ -13,4 +13,7 @@
     <string name="text_iniciar_sesion">Iniciar sesión</string>
     <string name="text_olvidaste_tu_contrasena">Olvidaste tu contraseña?</string>
 
+    <string name="hint_nombre_comercio">Contraseña</string>
+    <string name="hint_fecha">Contraseña</string>
+
 </resources>
