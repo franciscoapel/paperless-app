@@ -3,11 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BoletasActivity">
+    tools:context=".BoletasActivity"
+    android:background="@color/colorPrimary">
 
+   <androidx.appcompat.widget.Toolbar
+       android:id="@+id/boletas_activity_toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/colorPrimary"
+       android:elevation="4dp"
+       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rv_boletas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="90dp"
+       android:layout_marginLeft="30dp"
+       android:layout_marginRight="30dp"
+       />
 </RelativeLayout>

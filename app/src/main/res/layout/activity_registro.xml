@@ -60,7 +60,7 @@
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
         app:backgroundTint="@color/colorAccent"
-        android:hint="@string/text_go"
+        android:hint="@string/text_go_paperless"
         android:textColorHint="#FFFFFF"
         android:textSize="22sp"
         android:layout_marginTop="30dp"
