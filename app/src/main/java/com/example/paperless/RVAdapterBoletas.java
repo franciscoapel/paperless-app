@@ -23,7 +23,7 @@ public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BillsViewHolder> 
     @Override
     public BillsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_rv_boletas, null, false);
+                .inflate(R.layout.item_rv_boletas_activity, null, false);
         return new BillsViewHolder(view);
     }
 

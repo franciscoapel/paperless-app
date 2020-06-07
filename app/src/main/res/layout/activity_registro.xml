@@ -11,6 +11,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/tv_nombres_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
@@ -22,6 +23,7 @@
         android:layout_marginTop="20dp"
         android:inputType="text"/>
     <EditText
+        android:id="@+id/tv_apellidos_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
@@ -33,6 +35,7 @@
         android:layout_marginTop="10dp"
         android:inputType="text"/>
     <EditText
+        android:id="@+id/tv_rut_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
@@ -44,6 +47,7 @@
         android:layout_marginTop="10dp"
         android:inputType="text"/>
     <EditText
+        android:id="@+id/tv_email_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
@@ -75,6 +79,7 @@
         android:layout_marginTop="10dp"/>
 
     <TextView
+        android:id="@+id/tv_inicia_aqui_registro_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_inicia_aqui"

@@ -28,7 +28,7 @@
             android:layout_height="40dp"
             android:hint="@string/hint_fecha"
             android:textSize="15sp"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_marginRight="50dp"
             android:textColor="@android:color/white"/>
 

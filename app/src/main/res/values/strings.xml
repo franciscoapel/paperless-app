@@ -19,4 +19,8 @@
     <string name="title_menu_agregar">agregar</string>
     <string name="title_menu_buscar">buscar</string>
 
+    <string name="boton_confirmar">confirmar</string>
+    <string name="boton_cancelar">cancelar</string>
+    <string name="boton_listo">listo</string>
+
 </resources>

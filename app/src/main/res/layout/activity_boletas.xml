@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BoletasActivity"
     android:background="@color/colorPrimary">
 
@@ -12,7 +13,8 @@
        android:layout_height="wrap_content"
        android:background="@color/colorPrimary"
        android:elevation="4dp"
-       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+       app:subtitle="Boletas"/>
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rv_boletas"

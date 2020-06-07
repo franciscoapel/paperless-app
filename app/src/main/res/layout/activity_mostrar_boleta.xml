@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MostrarBoletaActivity"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_mostrar_boleta_activity"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        />
+
+    <Button
+        android:id="@+id/boton_listo_mostar_boleta_activity"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="@string/boton_listo"
+        android:layout_alignTop="@id/linearlayout_mostrar_boleta_activity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/linearlayout_mostrar_boleta_activity"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/boton_confirmar_mostrar_boleta_activity"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_confirmar"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/boton_cancelar_mostrar_boleta_activity"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_cancelar"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
