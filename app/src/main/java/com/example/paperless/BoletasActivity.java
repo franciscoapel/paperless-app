@@ -41,6 +41,8 @@ public class BoletasActivity extends AppCompatActivity {
 
         BDHBoletas bd_helper = new BDHBoletas
                 (this, BDHBoletas.NOMBRE_BD_BOLETAS, null, 1);
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

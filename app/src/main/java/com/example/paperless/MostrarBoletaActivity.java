@@ -2,11 +2,15 @@ package com.example.paperless;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.paperless.entidadesbd.Boleta;
 
 public class MostrarBoletaActivity extends AppCompatActivity {
 
@@ -37,7 +41,42 @@ public class MostrarBoletaActivity extends AppCompatActivity {
             boton_confirmar.setVisibility(View.VISIBLE);
             boton_cancelar.setVisibility(View.VISIBLE);
         }
-
-        tv_info_boleta.setText(info_boleta);
+        String[] valores = info_boleta.split(";");
+        for (int i=0; i< Boleta.CAMPOS.length; i++) {
+            imprimir_campo(Boleta.CAMPOS[i], valores[i]);
+        }
     }
+
+    private void imprimir_campo(String campo, String valor) {
+        int tamanoLetra, colorLetra;
+        tamanoLetra = 16;
+        colorLetra = Color.WHITE;
+        LinearLayout campoCompleto = new LinearLayout(this);
+        TextView tvCampo, tvSeparador, tvValor;
+        tvCampo = new TextView(this);
+        tvCampo.setWidth(dpToPixel(94));
+        tvCampo.setTextSize(tamanoLetra);
+        tvCampo.setTextColor(colorLetra);
+        tvCampo.setText(campo);
+        tvSeparador = new TextView(this);
+        tvSeparador.setWidth(dpToPixel(10));
+        tvSeparador.setTextSize(tamanoLetra);
+        tvSeparador.setTextColor(colorLetra);
+        tvSeparador.setText(":");
+        tvValor = new TextView(this);
+        tvValor.setWidth(dpToPixel(200));
+        tvValor.setGravity(Gravity.END);
+        tvValor.setTextSize(tamanoLetra);
+        tvValor.setTextColor(colorLetra);
+        tvValor.setText(valor);
+
+        campoCompleto.addView(tvCampo);
+        campoCompleto.addView(tvSeparador);
+        campoCompleto.addView(tvValor);
+        linearlayout_info_boleta.addView(campoCompleto);
+    }
+
+    private int dpToPixel(int dp) {
+        return (int)(dp*(getResources().getDisplayMetrics().density)+0.5f);}
+
 }

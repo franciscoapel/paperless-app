@@ -22,6 +22,8 @@ public class Boleta {
     public static final String DETALLE = "Detalle";
     public static final String DESCUENTO = "Descuento";
     public static final String TOTAL = "Total";
+    public static final String[] CAMPOS = {FOLIO, NOMBRE, RUT, DESCRIPCION, DIRECCION, CONTACTO,
+            FECHA, DETALLE, DESCUENTO, TOTAL};
 
     public Boleta(int folio, String nombre_comercio, String rut_comercio,
                   String descripcion_comercio, String direccion_comercio, String contacto_comercio,
