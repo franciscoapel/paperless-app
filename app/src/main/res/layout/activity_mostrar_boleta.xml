@@ -32,12 +32,14 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/boton_listo" />
+            android:text="@string/boton_listo"
+            android:onClick="volver"/>
         <Button
             android:id="@+id/boton_confirmar_mostrar_boleta_activity"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="@string/boton_confirmar"
+            android:onClick="confirmarBoleta"
             android:visibility="gone"
             />
         <Button
@@ -46,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/boton_confirmar_mostrar_boleta_activity"
             android:text="@string/boton_cancelar"
+            android:onClick="volver"
             android:visibility="gone"
             />
 

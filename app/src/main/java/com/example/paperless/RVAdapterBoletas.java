@@ -1,5 +1,6 @@
 package com.example.paperless;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,27 +10,37 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+import com.example.paperless.entidadesbd.Boleta;
+
 import java.util.ArrayList;
 
-public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BillsViewHolder> {
+public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BoletasViewHolder> {
 
-    ArrayList<String[]> listaBoletas;
+    ArrayList<Boleta> listaBoletas;
 
-    public RVAdapterBoletas(ArrayList<String[]> listaBoletas) {
+    public RVAdapterBoletas(ArrayList<Boleta> listaBoletas) {
         this.listaBoletas = listaBoletas;
     }
 
     @NonNull
     @Override
-    public BillsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BoletasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_rv_boletas_activity, null, false);
-        return new BillsViewHolder(view);
+        return new BoletasViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BillsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BoletasViewHolder holder, final int position) {
         holder.asignarDatos(listaBoletas.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), MostrarBoletaActivity.class);
+                i.putExtra(Boleta.INFO, listaBoletas.get(position).getInfoBoleta());
+                v.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -37,17 +48,17 @@ public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BillsViewHolder> 
         return listaBoletas.size();
     }
 
-    public class BillsViewHolder extends RecyclerView.ViewHolder {
+    public class BoletasViewHolder extends RecyclerView.ViewHolder {
         TextView nombreComercio, fecha;
-        public BillsViewHolder(@NonNull View itemView) {
+        public BoletasViewHolder(@NonNull View itemView) {
             super(itemView);
             nombreComercio = itemView.findViewById(R.id.item_nombre_comercio);
             fecha = itemView.findViewById(R.id.item_fecha);
         }
 
-        public void asignarDatos(String[] datos) {
-            nombreComercio.setText(datos[0]);
-            fecha.setText(datos[1]);
+        public void asignarDatos(Boleta boleta) {
+            nombreComercio.setText(boleta.getNombreComercio());
+            fecha.setText(boleta.getFecha());
         }
     }
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.example.paperless.entidadesbd.Boleta;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -39,7 +40,7 @@ public class EscanerBoletaActivity extends AppCompatActivity {
                     public void run() {
                         Intent i = new Intent(EscanerBoletaActivity.this,
                                 MostrarBoletaActivity.class);
-                        i.putExtra("info_boleta", result.getText());
+                        i.putExtra(Boleta.INFO, result.getText());
                         i.putExtra("es_nuevo_ingreso", true);
                         startActivity(i);
                     }

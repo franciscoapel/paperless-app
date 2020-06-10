@@ -2,6 +2,10 @@ package com.example.paperless;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.paperless.entidadesbd.BDHBoletas;
 import com.example.paperless.entidadesbd.Boleta;
 
 public class MostrarBoletaActivity extends AppCompatActivity {
@@ -33,7 +39,7 @@ public class MostrarBoletaActivity extends AppCompatActivity {
         boton_confirmar = findViewById(R.id.boton_confirmar_mostrar_boleta_activity);
         boton_cancelar = findViewById(R.id.boton_cancelar_mostrar_boleta_activity);
 
-        info_boleta = getIntent().getStringExtra("info_boleta");
+        info_boleta = getIntent().getStringExtra(Boleta.INFO);
         es_nueva_boleta = getIntent().getBooleanExtra("es_nuevo_ingreso", false);
 
         if (es_nueva_boleta) {
@@ -45,6 +51,26 @@ public class MostrarBoletaActivity extends AppCompatActivity {
         for (int i=0; i< Boleta.CAMPOS.length; i++) {
             imprimir_campo(Boleta.CAMPOS[i], valores[i]);
         }
+    }
+
+    public void confirmarBoleta(View view){
+        String[] valores = info_boleta.split(";");
+        BDHBoletas bdHelper = new BDHBoletas
+                (this, BDHBoletas.NOMBRE_BD_BOLETAS, null, 1);
+        SQLiteDatabase bdBoletas = bdHelper.getWritableDatabase();
+        ContentValues cValues = new ContentValues();
+        for (int i=0; i<valores.length; i++) {
+            cValues.put(BDHBoletas.CAMPOS[i], valores[i]);
+        }
+        if (bdBoletas.insert(BDHBoletas.NOMBRE_TABLA_BOLETAS, null, cValues)==-1)
+            Toast.makeText(this, "Folio repetido, imposible agregar boleta.",
+                    Toast.LENGTH_SHORT).show();
+        bdBoletas.close();
+        startActivity(new Intent(this, BoletasActivity.class));
+    }
+
+    public void volver(View view) {
+        startActivity(new Intent(this, BoletasActivity.class));
     }
 
     private void imprimir_campo(String campo, String valor) {
