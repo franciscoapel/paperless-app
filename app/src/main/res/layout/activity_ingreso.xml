@@ -11,6 +11,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/et_rut_ingreso_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
@@ -19,9 +20,10 @@
         android:textColorHint="@color/colorPrimary"
         android:gravity="center"
         android:textSize="25sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:inputType="text"/>
     <EditText
+        android:id="@+id/et_contrasena_ingreso_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_view"
@@ -41,6 +43,7 @@
         android:textColorHint="#FFFFFF"
         android:textSize="22sp"
         android:layout_marginTop="30dp"
+        android:onClick="ingresar"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +51,7 @@
         android:text="@string/text_olvidaste_tu_contrasena"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
 
 </LinearLayout>

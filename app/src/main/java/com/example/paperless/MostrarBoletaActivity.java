@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.paperless.entidadesbd.BDHBoletas;
+import com.example.paperless.entidadesbd.BDHPaperless;
 import com.example.paperless.entidadesbd.Boleta;
 
 public class MostrarBoletaActivity extends AppCompatActivity {
@@ -55,17 +54,18 @@ public class MostrarBoletaActivity extends AppCompatActivity {
 
     public void confirmarBoleta(View view){
         String[] valores = info_boleta.split(";");
-        BDHBoletas bdHelper = new BDHBoletas
-                (this, BDHBoletas.NOMBRE_BD_BOLETAS, null, 1);
-        SQLiteDatabase bdBoletas = bdHelper.getWritableDatabase();
+        BDHPaperless bdh = new BDHPaperless
+                (this, BDHPaperless.NOMBRE_BD_PAPERLESS, null, 1);
+        SQLiteDatabase bdPaperless = bdh.getWritableDatabase();
         ContentValues cValues = new ContentValues();
         for (int i=0; i<valores.length; i++) {
-            cValues.put(BDHBoletas.CAMPOS[i], valores[i]);
+            cValues.put(BDHPaperless.CAMPOS_BOLETA[i], valores[i]);
         }
-        if (bdBoletas.insert(BDHBoletas.NOMBRE_TABLA_BOLETAS, null, cValues)==-1)
+        cValues.put(BDHPaperless.RUT_CLIENTE_BOLETA, IngresoActivity.usuario.getRut());
+        if (bdPaperless.insert(BDHPaperless.NOMBRE_TABLA_BOLETAS, null, cValues)==-1)
             Toast.makeText(this, "Folio repetido, imposible agregar boleta.",
                     Toast.LENGTH_SHORT).show();
-        bdBoletas.close();
+        bdPaperless.close();
         startActivity(new Intent(this, BoletasActivity.class));
     }
 

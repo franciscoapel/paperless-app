@@ -1,91 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistroActivity"
-    android:background="@color/colorPrimary"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary">
 
     <EditText
-        android:id="@+id/tv_nombres_registro_activity"
+        android:id="@+id/et_nombres_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_view"
         android:hint="@string/hint_nombres"
         android:importantForAutofill="no"
         android:textColorHint="@color/colorPrimary"
-        android:gravity="center"
         android:textSize="25sp"
-        android:layout_marginTop="20dp"
         android:inputType="text"/>
     <EditText
-        android:id="@+id/tv_apellidos_registro_activity"
+        android:id="@+id/et_apellidos_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_alignTop="@id/et_nombres_registro_activity"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:background="@drawable/rounded_view"
         android:hint="@string/hint_apellidos"
         android:importantForAutofill="no"
         android:textColorHint="@color/colorPrimary"
-        android:gravity="center"
         android:textSize="25sp"
-        android:layout_marginTop="10dp"
         android:inputType="text"/>
     <EditText
-        android:id="@+id/tv_rut_registro_activity"
+        android:id="@+id/et_rut_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_alignTop="@id/et_apellidos_registro_activity"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:background="@drawable/rounded_view"
         android:hint="@string/hint_rut"
         android:importantForAutofill="no"
         android:textColorHint="@color/colorPrimary"
-        android:gravity="center"
         android:textSize="25sp"
-        android:layout_marginTop="10dp"
         android:inputType="text"/>
     <EditText
-        android:id="@+id/tv_email_registro_activity"
+        android:id="@+id/et_email_registro_activity"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_alignTop="@id/et_rut_registro_activity"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:background="@drawable/rounded_view"
         android:hint="@string/hint_email"
         android:importantForAutofill="no"
         android:textColorHint="@color/colorPrimary"
-        android:gravity="center"
         android:textSize="25sp"
-        android:layout_marginTop="10dp"
         android:inputType="textEmailAddress"/>
+    <EditText
+        android:id="@+id/et_contrasena_registro_activity"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@id/et_email_registro_activity"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/rounded_view"
+        android:hint="@string/hint_contrasena"
+        android:importantForAutofill="no"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="25sp"
+        android:inputType="textPassword"/>
+    <ImageButton
+        android:id="@+id/ib_hint_contrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/et_contrasena_registro_activity"
+        android:layout_alignTop="@id/et_contrasena_registro_activity"
+        android:layout_alignBottom="@id/et_contrasena_registro_activity"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/ic_baseline_info_24"
+        android:background="@android:color/transparent"
+        android:onClick="mostrarHintContrasena"
+        android:contentDescription="@string/ib_contrasena_contentdescription"/>
+
+    <TextView
+        android:id="@+id/tv_hint_contrasena"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/et_contrasena_registro_activity"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:text="@string/ib_contrasena_hint"
+        android:visibility="gone"/>
 
     <Button
+        android:id="@+id/boton_go_paperless"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_alignTop="@id/et_contrasena_registro_activity"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_view"
         app:backgroundTint="@color/colorAccent"
         android:hint="@string/text_go_paperless"
         android:textColorHint="#FFFFFF"
         android:textSize="22sp"
-        android:layout_marginTop="30dp"
-        android:onClick="irABoletas"/>
+        android:onClick="registrar"/>
 
     <TextView
+        android:id="@+id/tv_ya_tienes_una_cuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@id/boton_go_paperless"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/text_cuenta"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/tv_inicia_aqui_registro_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_ya_tienes_una_cuenta"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/text_inicia_aqui"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
-        android:layout_marginTop="2dp"/>
+        android:onClick="inicia_aqui"/>
 
 
-</LinearLayout>
+</RelativeLayout>

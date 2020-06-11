@@ -5,13 +5,14 @@
     <string name="hint_apellidos">Apellidos</string>
     <string name="hint_rut">Rut</string>
     <string name="hint_email">e-mail</string>
+    <string name="hint_contrasena">Contraseña</string>
     <string name="text_go_paperless">Go Paperless!</string>
     <string name="text_cuenta">Ya tienes una cuenta?</string>
     <string name="text_inicia_aqui">Inicia aquí</string>
-
-    <string name="hint_contrasena">Contraseña</string>
+    <string name="ib_contrasena_hint">"Minimo:\n8 caracteres\nUna letra minuscula\nUna letra mayúscula\nUn digito\nUn caracter especial"</string>
     <string name="text_iniciar_sesion">Iniciar sesión</string>
     <string name="text_olvidaste_tu_contrasena">Olvidaste tu contraseña?</string>
+    <string name="ib_contrasena_contentdescription">ayuda para conocer requisitos de la contrasena</string>
 
     <string name="hint_nombre_comercio">NombreComercio</string>
     <string name="hint_fecha">88&#8211;88&#8211;8888</string>

@@ -11,6 +11,7 @@ public class Boleta {
     private String detalle;
     private String descuento;
     private String total;
+    private String rut_cliente;
 
     public static final String FOLIO = "Folio";
     public static final String NOMBRE = "Nombre";
@@ -28,7 +29,7 @@ public class Boleta {
 
     public Boleta(String folio, String nombre_comercio, String rut_comercio,
                   String descripcion_comercio, String direccion_comercio, String contacto_comercio,
-                  String fecha, String detalle, String descuento, String total) {
+                  String fecha, String detalle, String descuento, String total, String rut_cliente) {
         this.folio = folio;
         this.nombre_comercio = nombre_comercio;
         this.rut_comercio = rut_comercio;
@@ -39,6 +40,7 @@ public class Boleta {
         this.detalle = detalle;
         this.descuento = descuento;
         this.total = total;
+        this.rut_cliente = rut_cliente;
     }
 
     public String getInfoBoleta() {
