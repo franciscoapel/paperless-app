@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,13 +15,16 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.example.paperless.entidadesbd.Boleta;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BoletasViewHolder> {
+public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BoletasViewHolder> implements Filterable {
 
     ArrayList<Boleta> listaBoletas;
+    ArrayList<Boleta> listaBoletasCompleta;
 
     public RVAdapterBoletas(ArrayList<Boleta> listaBoletas) {
         this.listaBoletas = listaBoletas;
+        this.listaBoletasCompleta = new ArrayList<>(listaBoletas);
     }
 
     @NonNull
@@ -48,6 +53,8 @@ public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BoletasViewHolder
         return listaBoletas.size();
     }
 
+
+
     public class BoletasViewHolder extends RecyclerView.ViewHolder {
         TextView nombreComercio, fecha;
         public BoletasViewHolder(@NonNull View itemView) {
@@ -61,5 +68,38 @@ public class RVAdapterBoletas extends Adapter<RVAdapterBoletas.BoletasViewHolder
             fecha.setText(boleta.getFecha());
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return  filtroPorNombreComercio;
+    }
+
+    private Filter filtroPorNombreComercio = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Boleta> listaBoletasFiltrada = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                listaBoletasFiltrada.addAll(listaBoletasCompleta);
+            } else {
+                String patronFiltrado = constraint.toString().toLowerCase().trim();
+                for (Boleta boleta: listaBoletasCompleta) {
+                    if (boleta.getNombreComercio().toLowerCase().contains(patronFiltrado))
+                        listaBoletasFiltrada.add(boleta);
+                }
+            }
+            FilterResults resultadoFiltro = new FilterResults();
+            resultadoFiltro.values = listaBoletasFiltrada;
+            return resultadoFiltro;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            listaBoletas.clear();
+            listaBoletas.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
 
 }

@@ -25,6 +25,8 @@ public class IngresoActivity extends AppCompatActivity {
 
         et_rut = findViewById(R.id.et_rut_ingreso_activity);
         et_contrasena = findViewById(R.id.et_contrasena_ingreso_activity);
+
+
     }
 
     public void ingresar(View view) {
@@ -60,5 +62,9 @@ public class IngresoActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

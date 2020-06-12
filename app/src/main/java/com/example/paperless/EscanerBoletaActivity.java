@@ -88,4 +88,10 @@ public class EscanerBoletaActivity extends AppCompatActivity {
             }
         }).check();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

@@ -1,17 +1,22 @@
 package com.example.paperless;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import com.example.paperless.entidadesbd.BDHPaperless;
 import com.example.paperless.entidadesbd.Boleta;
@@ -22,6 +27,7 @@ public class BoletasActivity extends AppCompatActivity {
 
     ArrayList<Boleta> listaBoletas;
     RecyclerView rv_boletas;
+    RVAdapterBoletas rvaBoletas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +58,28 @@ public class BoletasActivity extends AppCompatActivity {
         cursor.close();
         rv_boletas = findViewById(R.id.rv_boletas);
         rv_boletas.setLayoutManager(new LinearLayoutManager(this));
-        rv_boletas.setAdapter(new RVAdapterBoletas(listaBoletas));
+        rvaBoletas = new RVAdapterBoletas(listaBoletas);
+        rv_boletas.setAdapter(rvaBoletas);
 
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_boletas_activity, menu);
+        MenuItem itemBuscar = menu.findItem(R.id.buscar_menu);
+        SearchView barraBusqueda = (SearchView)itemBuscar.getActionView();
+        barraBusqueda.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        barraBusqueda.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                rvaBoletas.getFilter().filter(newText);
+                return false;
+            }
+        });
         return true;
     }
 
@@ -70,5 +92,21 @@ public class BoletasActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setMessage("Quieres cerrar sesion?");
+        adb.setNegativeButton("No", null);
+        adb.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                IngresoActivity.usuario = null;
+                finish();
+                BoletasActivity.super.onBackPressed();
+            }
+        });
+        adb.create().show();
     }
 }

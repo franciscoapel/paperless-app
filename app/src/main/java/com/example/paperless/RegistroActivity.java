@@ -21,6 +21,8 @@ public class RegistroActivity extends AppCompatActivity {
     EditText et_nombres, et_apellidos, et_rut, et_email, et_contrasena;
     TextView tv_inicia_aqui, tv_hintContrasena;
 
+    private Toast atrasToast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +72,7 @@ public class RegistroActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, IngresoActivity.class);
-                startActivity(i);
+                startActivity(new Intent(this, IngresoActivity.class));
             }
         }
     }
@@ -108,7 +109,17 @@ public class RegistroActivity extends AppCompatActivity {
 
     private Boolean contrasenaEsValida(String contrasena) {
         String patron = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-        if (contrasena.matches(patron)) return true;
-        return false;
+        return contrasena.matches(patron);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(atrasToast !=null&& atrasToast.getView().getWindowToken()!=null) {
+            super.onBackPressed();
+        } else {
+            atrasToast = Toast.makeText(this, "Presiona atras una vez más para salir",
+                    Toast.LENGTH_SHORT);
+            atrasToast.show();
+        }
     }
 }

@@ -66,11 +66,15 @@ public class MostrarBoletaActivity extends AppCompatActivity {
             Toast.makeText(this, "Folio repetido, imposible agregar boleta.",
                     Toast.LENGTH_SHORT).show();
         bdPaperless.close();
-        startActivity(new Intent(this, BoletasActivity.class));
+        finish();
+        Intent intent = new Intent(this, BoletasActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void volver(View view) {
-        startActivity(new Intent(this, BoletasActivity.class));
+        finish();
+        super.onBackPressed();
     }
 
     private void imprimir_campo(String campo, String valor) {
@@ -105,4 +109,9 @@ public class MostrarBoletaActivity extends AppCompatActivity {
     private int dpToPixel(int dp) {
         return (int)(dp*(getResources().getDisplayMetrics().density)+0.5f);}
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }
