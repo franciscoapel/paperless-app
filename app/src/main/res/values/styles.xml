@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DialogAnimationDesde">
+        <item name="android:windowEnterAnimation">@anim/izquierda_derecha</item>
+    </style>
+    <style name="DialogAnimationHasta">
+        <item name="android:windowEnterAnimation">@anim/derecha_izquierda</item>
+    </style>
+
 </resources>

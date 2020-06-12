@@ -17,8 +17,7 @@
     <string name="hint_nombre_comercio">NombreComercio</string>
     <string name="hint_fecha">88&#8211;88&#8211;8888</string>
 
-    <string name="title_menu_agregar">agregar</string>
-    <string name="title_menu_buscar">buscar</string>
+    <string name="item_menu">itemmenu</string>
 
     <string name="boton_confirmar">confirmar</string>
     <string name="boton_cancelar">cancelar</string>
